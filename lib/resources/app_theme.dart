@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_flutter_and_material/resources/color_pallete.dart';
+
+import 'color_pallete.dart';
 
 // Defined for custom theme template
 class AppTheme {

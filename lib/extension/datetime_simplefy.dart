@@ -1,4 +1,4 @@
-extension DateTimeExt on DateTime {
+extension DateTimeSimplefy on DateTime {
   int simplify() {
     return millisecondsSinceEpoch ~/ 60000;
   }

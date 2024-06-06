@@ -1,5 +1,3 @@
-// ignore_for_file: unused_local_variable
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -111,33 +109,37 @@ class StrictPhoneTextField extends StatelessWidget {
           style: DefaultTextStyle.of(context).style,
           decoration: InputDecoration(
             filled: true,
-            fillColor: Color.fromRGBO(16, 16, 26, 0.063),
+            fillColor: const Color.fromRGBO(16, 16, 26, 0.063),
             hintText: hintText,
             hintStyle: const TextStyle(color: Colors.black54),
             prefixIcon: prefixIcon,
             suffixIcon: suffixIcon,
-            border: manualError != null
+            border: manualError == true
                 ? OutlineInputBorder(
                     borderSide: BorderSide.none,
                     borderRadius: BorderRadius.circular(8))
                 : theme.inputDecorationTheme.border?.copyWith(
                     borderSide: BorderSide(color: theme.colorScheme.error)),
-                    enabledBorder: manualError! ? OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(8),
+            enabledBorder: manualError == true
+                ? OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(8),
+                  )
+                : theme.inputDecorationTheme.enabledBorder,
+            focusedBorder: manualError == true
+                ? null
+                : theme.inputDecorationTheme.focusedBorder?.copyWith(
+                    borderSide: BorderSide(
+                      color: theme.colorScheme.error,
+                      width: 2.0,
                     ),
-                    focusedBorder: manualError! ? null : theme.inputDecorationTheme.focusedBorder?.copyWith(
-                      borderSide: BorderSide(
-                        color: theme.colorScheme.error,
-                        width: 2.0,
-                      ),
-                    ),
-                    suffixIconConstraints: suffixIcon != null && suffixIcon is Text 
-                    ? const BoxConstraints(minWidth: 16.0)
-                    : const BoxConstraints(
-                      minWidth: 32.0,
-                      minHeight: 24.0,
-                    ),
+                  ),
+            suffixIconConstraints: suffixIcon != null && suffixIcon is Text
+                ? const BoxConstraints(minWidth: 16.0)
+                : const BoxConstraints(
+                    minWidth: 32.0,
+                    minHeight: 24.0,
+                  ),
           ),
           onTap: onTap,
           onChanged: onChanged,
